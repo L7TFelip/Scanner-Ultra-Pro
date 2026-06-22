@@ -10,7 +10,6 @@ def analisar():
     dados = request.get_json()
     texto = dados.get('conteudo', '')
     
-    # Inicia contagem de tempo para simular processamento
     start_time = time.time()
     
     palavras_chave = ['python', 'flask', 'api', 'backend', 'dados', 'servidor', 'ia', 'algoritmo', 'html', 'css', 'javascript', 'react', 'sql']
@@ -18,11 +17,9 @@ def analisar():
     total_palavras = len(palavras)
     total_caracteres = len(texto)
     
-    # Encontra quais palavras-chave foram usadas
     termos_encontrados = [p for p in palavras_chave if p in texto.lower()]
     densidade = len(termos_encontrados)
 
-    # Lógica de Classificação Profissional
     if total_palavras < 5:
         res = {
             "status": "Baixa Qualidade",
@@ -45,7 +42,6 @@ def analisar():
             "classe": "QualidadeMédia"
         }
 
-    # Tempo de resposta simulado
     process_time = round((time.time() - start_time) * 1000, 2)
 
     return jsonify({
